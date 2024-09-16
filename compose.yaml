@@ -1,10 +1,21 @@
+version: '3.1'
+
 services:
-  mysql:
-    image: 'mysql:latest'
-    environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+  db:
+    container_name: sb_db
+    image: mysql:8.0.36
     ports:
-      - '3306'
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: SB
+
+  adminer:
+    image: adminer:4.8.1
+    restart: always
+    ports:
+      - 8081:8080
+    depends_on:
+      - db
+
+
