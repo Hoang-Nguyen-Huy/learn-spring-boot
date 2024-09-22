@@ -40,7 +40,6 @@ public class UserService {
         updateUser.setFirstName(dto.getFirstName());
         updateUser.setLastName(dto.getLastName());
         updateUser.setDob(dto.getDob());
-
         return userRepository.save(updateUser);
     }
 
